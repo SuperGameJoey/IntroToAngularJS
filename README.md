@@ -14,3 +14,6 @@ This project covers a few basic topics:
 ** master branch contains a starting point for the app
 * View the commits in the ['finished' branch in github](https://github.com/jlapegna/IntroToAngularJS)
 ** This provides a step by step approach to building out the application
+
+# Tutorial Steps
+1. Link to AngularJS and create a new app
