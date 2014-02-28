@@ -12,16 +12,6 @@ app.config(['$routeProvider',
 
 }]);
 
-
-// Our first controller.
-// The ($scope) parameter adds a dependancy on $scope
-// app.controller("WelcomeCtrl",
-//   function($scope) {
-
-//   }
-// );
-// BUT... It's not good practice because it can't be minified - so we use this instead
-
 app.controller ("WelcomeCtrl", ['$scope', '$location',
   function ($scope, $location) {
     // the user's name
@@ -30,16 +20,24 @@ app.controller ("WelcomeCtrl", ['$scope', '$location',
     $scope.viewTeam = function() {
       $location.path('/team/' + $scope.name);
     }
-  }
-]);
+}]);
 
-app.controller("TeamCtrl", ['$scope', '$location', '$routeParams',
-  function ($scope, $location, $routeParams) {
+app.controller("TeamCtrl", ['$scope', '$location', '$routeParams', '$http',
+  function ($scope, $location, $routeParams, $http) {
 
     $scope.name = $routeParams.name;
 
     $scope.goHome = function() {
       $location.path('/');
     }
+
+    $scope.setSelected = function(member) {
+      $scope.selected = member;
+    }
+
+    // load data in a not so clean way
+    $http.get('/app/data/team.json').success(function(data) {
+      $scope.team = data.team;
+    });
 
 }]);

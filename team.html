@@ -2,3 +2,15 @@
 <h3 ng-if="name">Hi {{name}}</h3>
 <p>Angular is super cool!</p>
 <p><button type="button" class="btn btn-primary" ng-click="goHome()">Home</button></p>
+
+<div class="panel panel-default" ng-if="selected">
+  <div class="panel-heading">{{ selected.name }}</div>
+  <div class="panel-body">
+    <p><img ng-src="{{ selected.image_url }}" class="img-thumbnail" alt="{{ selected.name }}"></p>
+    <p>{{ selected.bio }}</p>
+  </div>
+</div>
+
+<div ng-repeat="member in team" style="float:left; margin:5px;">
+  <img ng-src="{{ member.image_url }}" class="img-thumbnail" alt="{{ member.name }}" style="width:50px; height:50px;" ng-click="setSelected(member)">
+</div>

@@ -21,3 +21,4 @@ This project covers a few basic topics:
 3. Add first route and template
 4. Add secound route and link between the pages
 5. Pass a parameter to a route and display the content in the new view
+6. Load JSON resource file and display results
