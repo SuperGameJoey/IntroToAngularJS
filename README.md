@@ -19,3 +19,4 @@ This project covers a few basic topics:
 1. Link to AngularJS and create a new app
 2. Create first controller and add data binding
 3. Add first route and template
+4. Add secound route and link between the pages

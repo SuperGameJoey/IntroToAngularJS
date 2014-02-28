@@ -5,6 +5,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
 
     $routeProvider.when('/',      { templateUrl: 'welcome.html',  controller: 'WelcomeCtrl' });
+    $routeProvider.when('/team',   { templateUrl: 'team.html',    controller: 'TeamCtrl' });
     $routeProvider.otherwise({ redirectTo: '/' });
 
 }]);
@@ -19,9 +20,22 @@ app.config(['$routeProvider',
 // );
 // BUT... It's not good practice because it can't be minified - so we use this instead
 
-app.controller ("WelcomeCtrl", ['$scope',
-  function ($scope) {
+app.controller ("WelcomeCtrl", ['$scope', '$location',
+  function ($scope, $location) {
     // the user's name
     $scope.name = "Qbert"
+
+    $scope.viewTeam = function() {
+      $location.path('/team/');
+    }
   }
 ]);
+
+app.controller("TeamCtrl", ['$scope', '$location',
+  function ($scope, $location) {
+
+    $scope.goHome = function() {
+      $location.path('/');
+    }
+
+}]);
