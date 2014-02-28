@@ -20,3 +20,4 @@ This project covers a few basic topics:
 2. Create first controller and add data binding
 3. Add first route and template
 4. Add secound route and link between the pages
+5. Pass a parameter to a route and display the content in the new view

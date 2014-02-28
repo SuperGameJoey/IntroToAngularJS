@@ -1,3 +1,4 @@
-<h3>Team</h3>
+<h3 ng-if="!name">Team</h3>
+<h3 ng-if="name">Hi {{name}}</h3>
 <p>Angular is super cool!</p>
 <p><button type="button" class="btn btn-primary" ng-click="goHome()">Home</button></p>

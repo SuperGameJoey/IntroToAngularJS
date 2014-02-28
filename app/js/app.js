@@ -4,8 +4,10 @@ var app = angular.module("app", ['ngRoute']); // Sets up our app. Adding [] is s
 app.config(['$routeProvider',
   function($routeProvider) {
 
-    $routeProvider.when('/',      { templateUrl: 'welcome.html',  controller: 'WelcomeCtrl' });
-    $routeProvider.when('/team',   { templateUrl: 'team.html',    controller: 'TeamCtrl' });
+    $routeProvider.when('/',            { templateUrl: 'welcome.html',  controller: 'WelcomeCtrl' });
+    $routeProvider.when('/team',        { templateUrl: 'team.html',     controller: 'TeamCtrl' });
+    $routeProvider.when('/team/:name',  { templateUrl: 'team.html',     controller:'TeamCtrl' });
+
     $routeProvider.otherwise({ redirectTo: '/' });
 
 }]);
@@ -26,13 +28,15 @@ app.controller ("WelcomeCtrl", ['$scope', '$location',
     $scope.name = "Qbert"
 
     $scope.viewTeam = function() {
-      $location.path('/team/');
+      $location.path('/team/' + $scope.name);
     }
   }
 ]);
 
-app.controller("TeamCtrl", ['$scope', '$location',
-  function ($scope, $location) {
+app.controller("TeamCtrl", ['$scope', '$location', '$routeParams',
+  function ($scope, $location, $routeParams) {
+
+    $scope.name = $routeParams.name;
 
     $scope.goHome = function() {
       $location.path('/');
