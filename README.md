@@ -22,3 +22,4 @@ This project covers a few basic topics:
 4. Add secound route and link between the pages
 5. Pass a parameter to a route and display the content in the new view
 6. Load JSON resource file and display results
+7. Move JSON resource into a factory service

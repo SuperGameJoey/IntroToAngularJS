@@ -1,5 +1,5 @@
 // create the AngularJS app
-var app = angular.module("app", ['ngRoute']); // Sets up our app. Adding [] is setting us up for dependency injection, if we left those out it would be a getter, not a setter
+var app = angular.module("app", ['ngRoute', 'ngResource']); // Sets up our app. Adding [] is setting us up for dependency injection, if we left those out it would be a getter, not a setter
 
 app.config(['$routeProvider',
   function($routeProvider) {
@@ -12,6 +12,15 @@ app.config(['$routeProvider',
 
 }]);
 
+
+app.factory("TeamService", ['$resource',
+  function($resource) {
+    return $resource('/app/data/team.json', {}, {
+      query: { method:'GET' }
+    });
+}]);
+
+
 app.controller ("WelcomeCtrl", ['$scope', '$location',
   function ($scope, $location) {
     // the user's name
@@ -22,8 +31,9 @@ app.controller ("WelcomeCtrl", ['$scope', '$location',
     }
 }]);
 
-app.controller("TeamCtrl", ['$scope', '$location', '$routeParams', '$http',
-  function ($scope, $location, $routeParams, $http) {
+
+app.controller("TeamCtrl", ['$scope', '$location', '$routeParams', 'TeamService',
+  function ($scope, $location, $routeParams, TeamService) {
 
     $scope.name = $routeParams.name;
 
@@ -35,8 +45,7 @@ app.controller("TeamCtrl", ['$scope', '$location', '$routeParams', '$http',
       $scope.selected = member;
     }
 
-    // load data in a not so clean way
-    $http.get('/app/data/team.json').success(function(data) {
+    TeamService.query(function(data) {
       $scope.team = data.team;
     });
 
