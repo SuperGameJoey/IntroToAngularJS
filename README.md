@@ -23,3 +23,4 @@ This project covers a few basic topics:
 5. Pass a parameter to a route and display the content in the new view
 6. Load JSON resource file and display results
 7. Move JSON resource into a factory service
+8. Create a simple custom directive to replace content

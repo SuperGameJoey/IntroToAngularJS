@@ -50,3 +50,10 @@ app.controller("TeamCtrl", ['$scope', '$location', '$routeParams', 'TeamService'
     });
 
 }]);
+
+app.directive("member", function() {
+  return {
+    restrict: "E",    // A = Attribute, C = CSS Class, E = HTML Element, M = HTML Comment
+    templateUrl: "member.html"
+  };
+});
